@@ -1,0 +1,33 @@
+name: Deploy to Github pages
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  content: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    environment: 
+      name: github-pages
+      url: $({ steps.deployment.outputs.page_url })
+
+    steps:
+      - name: Download the Code
+        uses: actions/checkout@v4
+
+      - name: Prepare Github Pages
+        uses: actions/configure-pages@v5
+
+      - name: Package the site files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Publish to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
