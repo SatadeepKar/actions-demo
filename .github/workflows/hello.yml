@@ -12,6 +12,6 @@ jobs:
       - name: Say Hello
         run: echo "Hello, World!"
       - name: Show the Date
-        run: echo Today is $(date)
+        run: echo "Today is $(date)"
       - name: Show which folder we in
-        run: echo Current directory: $(pwd)
+        run: echo "Current directory: $(pwd)"
