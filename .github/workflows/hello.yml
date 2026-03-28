@@ -1,0 +1,17 @@
+name: Hello World
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  say-hello:
+    runs-on: windows-latest
+
+    steps:
+      - name: Say Hello
+        run: echo "Hello, World!"
+      - name: Show the Date
+        run: echo today is %DATE%
+      - name: Show which folder we in
+        run: cd
